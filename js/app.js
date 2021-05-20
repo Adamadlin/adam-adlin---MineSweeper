@@ -81,21 +81,22 @@ function renderBoard(board) {
         strHtml += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
             var cell = board[i][j];
-            var className = 'cell cell-' + i + '-' + j;
+            var cellClass = getClassName({ i: i, j: j })
             if (board[i][j].isMine === true) {
-                strHtml += `<td class="${className}" onclick="cellClicked(this ,${cell.location})"> ${MINE} </td>`
+                strHtml += `<td class= "cell ${cellClass}" onclick="cellClicked(this ,${cell.location})"> ${MINE} </td>`
             } else {
-                strHtml += `<td class="${className}" onclick="cellClicked(this ,${cell.location})"> ${EMPTY} </td>`
+                strHtml += `<td class="cell ${cellClass}" onclick="cellClicked(this ,${cell.location})"> ${EMPTY} </td>`
             }
         }
         strHtml += '</tr>'
     }
+    strHtml += '</tbody></table>'
+    console.log(strHtml)
+
+    var elTbody = document.querySelector('.board-container')
 
 
-
-
-    var elTable = document.querySelector('.board')
-    elTable.innerHTML = strHtml
+    elTbody.innerHTML = strHtml
 }
 
 
@@ -122,3 +123,12 @@ function renderCell(location, value) {
     elCell.innerText = value;
 }
 
+function getClassName(location) {
+    var cellClass = 'cell-' + location.i + '-' + location.j;
+    return cellClass;
+}
+function getCellCoord(strCellClasss) {
+    var parts = strCellClasss.split('-')
+    var coord = { i: +parts[1], j: +parts[2] };
+    return coord;
+}
