@@ -12,12 +12,16 @@
 </head>
 
 <body onload="init()">
+<!-- <body > -->
     <h1> Minesweeper Game </h1>
     <h2>Score: <span>0</span></h2>
+    <h3 id="timer">0</h3>
+    <h2 id="losewin"></h2>
     <h3> Choose difficulty:</h3>
-    <button onclick="difficulty(this)">Easy</button>
-    <button onclick="difficulty(this)">Medium</button>
-    <button onclick="difficulty(this)">Hard</button>
+    <button conclick="difficulty(this)" >Easy</button>
+    <button onclick="difficulty(this)" >Medium</button>
+    <button onclick="difficulty(this)" >Hard</button>
+    <!-- <button onclick="cellclicked(this)"></button> -->
     <div class="board-container"></div>
     <!-- <table border="1"    cellpadding="10"> -->
         <!-- <tbody class="board"></tbody>
